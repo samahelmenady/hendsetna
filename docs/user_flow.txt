@@ -1,0 +1,63 @@
+User Flow:
+
+1. User opens Hendsetna website.
+
+2. User clicks "Start New Design".
+
+3. User selects the project type:
+   - Residential
+   - Commercial
+   - Administrative
+   - Hospitality / Tourism
+
+4. Based on the selected project type, the website shows specific space options.
+
+5. User selects the space type.
+   Example:
+   Residential: Bedroom, Living Room, Kitchen, Bathroom
+   Commercial: Café, Restaurant, Store, Clinic
+   Administrative: Office, Meeting Room, Reception
+   Hospitality: Hotel Room, Resort Lobby, Lounge
+
+6. User enters space details:
+   - Area
+   - Dimensions
+   - Ceiling height
+   - Current condition
+   - Number of users
+   - Budget
+
+7. User selects design preferences:
+   - Interior style
+   - Color palette
+   - Materials
+   - Lighting type
+   - Furniture type
+
+8. User adds custom preferences in text form.
+
+9. User can upload visual inspiration:
+   - Room image
+   - Brand logo
+   - Favorite club image
+   - Reference design image
+   - Moodboard
+
+10. Gemini API analyzes all inputs.
+
+11. Gemini generates structured design outputs:
+   - Design brief
+   - Concept description
+   - Color palette
+   - Material suggestions
+   - Furniture suggestions
+   - Lighting suggestions
+   - Image-generation prompt
+
+12. The image model generates a suggested interior design image.
+
+13. User sees the final results page:
+   - Suggested design image
+   - Full design concept
+   - Editable prompt
+   - Design summary

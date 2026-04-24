@@ -1,0 +1,35 @@
+Project Name:
+Hendsetna | هندستنا
+
+Project Type:
+AI-powered Interior Design Assistant Website
+
+Project Idea:
+Hendsetna is a web application that helps interior designers generate a complete design concept based on client preferences, space details, colors, materials, lighting, furniture choices, inspiration images, logos, and personal style references.
+
+Main Goal:
+The goal of Hendsetna is to help interior designers understand client needs faster, organize project requirements, and generate a professional design direction with a suggested AI-generated interior design image.
+
+Target Users:
+- Interior designers
+- Decor engineers
+- Architects
+- Design students
+- Freelance designers
+
+Main Problem:
+Interior designers often spend time collecting scattered client preferences, understanding vague style descriptions, and creating initial design directions from scratch.
+
+Solution:
+Hendsetna collects all important project details in a structured way, analyzes them using Gemini API, and generates:
+- A professional design brief
+- A style direction
+- A color palette
+- Material suggestions
+- Furniture suggestions
+- Lighting suggestions
+- A professional image-generation prompt
+- A suggested interior design image that combines the selected features
+
+Important Note:
+Hendsetna does not replace the interior designer. It supports the designer by organizing client requirements and creating an initial visual concept that can be refined by the designer.

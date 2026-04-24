@@ -1,0 +1,1957 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hendsetna | هندستنا — AI Interior Design Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo" onclick="showSection('home')">
+          <span class="logo-en">Hendsetna</span>
+          <span class="logo-divider">|</span>
+          <span class="logo-ar">هندستنا</span>
+        </a>
+        <ul class="nav-links" id="nav-links">
+          <li>
+            <a href="#" onclick="showSection('home')" data-i18n="nav_home"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="showSection('how-it-works')"
+              data-i18n="nav_how"
+              >How It Works</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="showSection('project-types')"
+              data-i18n="nav_start"
+              >Start Design</a
+            >
+          </li>
+          <li>
+            <a href="#" onclick="showSection('results')" data-i18n="nav_results"
+              >Results</a
+            >
+          </li>
+        </ul>
+        <div class="nav-actions">
+          <button class="lang-toggle" id="lang-btn" onclick="toggleLanguage()">
+            العربية
+          </button>
+          <button
+            class="btn-cta"
+            onclick="showSection('project-types')"
+            data-i18n="cta_btn"
+          >
+            Start New Design
+          </button>
+          <button
+            class="nav-burger"
+            id="nav-burger"
+            onclick="toggleMobileMenu()"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ===== HOME SECTION ===== -->
+    <section id="home" class="section active">
+      <!-- Hero -->
+      <div class="hero">
+        <div class="hero-left">
+          <div class="hero-badge" data-i18n="hero_badge">
+            ✦ AI-Powered Design
+          </div>
+          <h1 class="hero-headline" data-i18n="hero_headline">
+            AI Interior Design Assistant for Creative Designers
+          </h1>
+          <p class="hero-sub" data-i18n="hero_sub">
+            Transform client preferences, space details, colors, materials,
+            furniture choices, and visual inspirations into a complete interior
+            design concept with a suggested AI-generated image.
+          </p>
+          <div class="hero-btns">
+            <button
+              class="btn-primary"
+              onclick="showSection('project-types')"
+              data-i18n="cta_btn"
+            >
+              Start New Design
+            </button>
+            <button
+              class="btn-ghost"
+              onclick="loadDemoAndShow()"
+              data-i18n="demo_btn"
+            >
+              View Demo Result
+            </button>
+          </div>
+          <div class="feature-badges">
+            <span class="badge" data-i18n="badge1">✦ Gemini-powered</span>
+            <span class="badge" data-i18n="badge2">Design Brief</span>
+            <span class="badge" data-i18n="badge3">AI Image Prompt</span>
+            <span class="badge" data-i18n="badge4">Client-ready Concept</span>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="hero-image-card">
+            <div class="hero-img-wrap">
+              <img
+                src="assets/images/hero-design.jpeg"
+                alt="Interior design preview"
+                onerror="
+                  this.style.display = 'none';
+                  this.nextElementSibling.style.display = 'flex';
+                "
+              />
+              <div class="hero-img-placeholder">
+                <div class="placeholder-shapes">
+                  <div class="shape s1"></div>
+                  <div class="shape s2"></div>
+                  <div class="shape s3"></div>
+                  <div class="shape s4"></div>
+                </div>
+                <span data-i18n="hero_img_placeholder"
+                  >Interior Design Preview</span
+                >
+              </div>
+            </div>
+            <div class="hero-card-overlay">
+              <div class="overlay-top">
+                <span class="overlay-label" data-i18n="overlay_label"
+                  >Suggested Design Preview</span
+                >
+                <span class="overlay-dot"></span>
+              </div>
+              <div class="overlay-details">
+                <div class="detail-row">
+                  <span class="detail-key" data-i18n="style_label">Style</span
+                  ><span class="detail-val">Modern Luxury</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-key" data-i18n="mood_label">Mood</span
+                  ><span class="detail-val" data-i18n="hero_mood"
+                    >Warm &amp; Creative</span
+                  >
+                </div>
+                <div class="detail-row palette-row">
+                  <span class="detail-key" data-i18n="palette_label"
+                    >Palette</span
+                  >
+                  <span class="palette-dots">
+                    <span
+                      class="dot"
+                      style="background: #1e3a5f"
+                      title="Navy"
+                    ></span>
+                    <span
+                      class="dot"
+                      style="background: #c95c3f"
+                      title="Terracotta"
+                    ></span>
+                    <span
+                      class="dot"
+                      style="background: #fffbf3"
+                      title="Cream"
+                      style="border: 1px solid #e8dccb"
+                    ></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- How It Works — embedded in Home for easy navigation -->
+      <div id="how-it-works-anchor"></div>
+      <div class="how-section" id="how-it-works-inline">
+        <div class="section-header">
+          <p class="section-eyebrow" data-i18n="how_eyebrow">The Process</p>
+          <h2 class="section-title" data-i18n="how_title">
+            How Hendsetna Works
+          </h2>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-icon">🏠</div>
+            <div class="step-num">01</div>
+            <h3 data-i18n="step1_title">Choose Project Type</h3>
+            <p data-i18n="step1_desc">
+              Select whether the space is residential, commercial,
+              administrative, or hospitality.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-icon">📐</div>
+            <div class="step-num">02</div>
+            <h3 data-i18n="step2_title">Enter Space Details</h3>
+            <p data-i18n="step2_desc">
+              Add dimensions, area, ceiling height, budget, current condition,
+              and user needs.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-icon">🎨</div>
+            <div class="step-num">03</div>
+            <h3 data-i18n="step3_title">Add Preferences &amp; Inspiration</h3>
+            <p data-i18n="step3_desc">
+              Choose style, colors, materials, lighting, furniture, and upload
+              logos or reference images.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-icon">✨</div>
+            <div class="step-num">04</div>
+            <h3 data-i18n="step4_title">Generate Design Concept</h3>
+            <p data-i18n="step4_desc">
+              Get a design brief, visual direction, image prompt, and suggested
+              design preview.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS SECTION (standalone) ===== -->
+    <section id="how-it-works" class="section">
+      <div class="how-section">
+        <div class="section-header">
+          <p class="section-eyebrow" data-i18n="how_eyebrow">The Process</p>
+          <h2 class="section-title" data-i18n="how_title">
+            How Hendsetna Works
+          </h2>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-icon">🏠</div>
+            <div class="step-num">01</div>
+            <h3 data-i18n="step1_title">Choose Project Type</h3>
+            <p data-i18n="step1_desc">
+              Select whether the space is residential, commercial,
+              administrative, or hospitality.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-icon">📐</div>
+            <div class="step-num">02</div>
+            <h3 data-i18n="step2_title">Enter Space Details</h3>
+            <p data-i18n="step2_desc">
+              Add dimensions, area, ceiling height, budget, current condition,
+              and user needs.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-icon">🎨</div>
+            <div class="step-num">03</div>
+            <h3 data-i18n="step3_title">Add Preferences &amp; Inspiration</h3>
+            <p data-i18n="step3_desc">
+              Choose style, colors, materials, lighting, furniture, and upload
+              logos or reference images.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-icon">✨</div>
+            <div class="step-num">04</div>
+            <h3 data-i18n="step4_title">Generate Design Concept</h3>
+            <p data-i18n="step4_desc">
+              Get a design brief, visual direction, image prompt, and suggested
+              design preview.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECT TYPE SELECTION ===== -->
+    <section id="project-types" class="section">
+      <div class="page-inner">
+        <div class="section-header">
+          <p class="section-eyebrow" data-i18n="types_eyebrow">Step 1</p>
+          <h2 class="section-title" data-i18n="types_title">
+            Choose Your Project Type
+          </h2>
+          <p class="section-subtitle" data-i18n="types_sub">
+            Select the type of space you want to design so Hendsetna can ask the
+            right questions.
+          </p>
+        </div>
+        <div class="types-grid">
+          <div class="type-card" onclick="selectType('residential')">
+            <div class="type-icon">🏡</div>
+            <h3 data-i18n="type_res">Residential</h3>
+            <p data-i18n="type_res_desc">
+              Homes, apartments, villas, bedrooms, living rooms, kitchens, and
+              family spaces.
+            </p>
+            <button class="btn-type" data-i18n="choose_btn">
+              Choose this type
+            </button>
+          </div>
+          <div class="type-card" onclick="selectType('commercial')">
+            <div class="type-icon">🏪</div>
+            <h3 data-i18n="type_com">Commercial</h3>
+            <p data-i18n="type_com_desc">
+              Cafés, restaurants, stores, clinics, salons, showrooms, and
+              customer-facing spaces.
+            </p>
+            <button class="btn-type" data-i18n="choose_btn">
+              Choose this type
+            </button>
+          </div>
+          <div class="type-card" onclick="selectType('administrative')">
+            <div class="type-icon">🏢</div>
+            <h3 data-i18n="type_adm">Administrative</h3>
+            <p data-i18n="type_adm_desc">
+              Offices, meeting rooms, reception areas, workspaces, manager
+              rooms, and training rooms.
+            </p>
+            <button class="btn-type" data-i18n="choose_btn">
+              Choose this type
+            </button>
+          </div>
+          <div class="type-card" onclick="selectType('hospitality')">
+            <div class="type-icon">🏨</div>
+            <h3 data-i18n="type_hos">Hospitality / Tourism</h3>
+            <p data-i18n="type_hos_desc">
+              Hotel rooms, resort lobbies, guest houses, lounges, chalets, and
+              tourism spaces.
+            </p>
+            <button class="btn-type" data-i18n="choose_btn">
+              Choose this type
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== RESIDENTIAL FORM ===== -->
+    <section id="form-residential" class="section">
+      <div class="page-inner form-page">
+        <div class="form-header">
+          <button class="btn-back" onclick="showSection('project-types')">
+            <span class="back-arrow">←</span>
+            <span data-i18n="back_btn">Back to Project Types</span>
+          </button>
+          <div class="form-title-block">
+            <span class="form-type-tag"
+              >🏡 <span data-i18n="type_res">Residential</span></span
+            >
+            <h2 data-i18n="res_form_title">Residential Design Details</h2>
+            <p data-i18n="res_form_sub">
+              Tell Hendsetna about the home space you want to design.
+            </p>
+          </div>
+        </div>
+
+        <form id="res-form" onsubmit="submitForm(event)">
+          <!-- Project Basics -->
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="basics_title">
+              Project Basics
+            </h3>
+            <div class="form-grid">
+              <div class="field-group">
+                <label data-i18n="proj_name">Project Name</label>
+                <input
+                  type="text"
+                  name="projectName"
+                  required
+                  placeholder="e.g. Ahmed's Bedroom Redesign"
+                />
+              </div>
+              <div class="field-group">
+                <label data-i18n="space_type">Space Type</label>
+                <select name="spaceType" required>
+                  <option value="" data-i18n="select_placeholder">
+                    — Select —
+                  </option>
+                  <option data-i18n="sp_bedroom">Bedroom</option>
+                  <option data-i18n="sp_living">Living Room</option>
+                  <option data-i18n="sp_kitchen">Kitchen</option>
+                  <option data-i18n="sp_bathroom">Bathroom</option>
+                  <option data-i18n="sp_dining">Dining Room</option>
+                  <option data-i18n="sp_kids">Kids Room</option>
+                  <option data-i18n="sp_balcony">Balcony</option>
+                  <option data-i18n="sp_apartment">Full Apartment</option>
+                  <option data-i18n="sp_villa">Villa</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label data-i18n="area_label">Area (m²)</label>
+                <input type="number" name="area" placeholder="e.g. 25" />
+              </div>
+              <div class="field-group">
+                <label data-i18n="dimensions_label">Dimensions</label>
+                <input
+                  type="text"
+                  name="dimensions"
+                  placeholder="e.g. 5m × 5m"
+                />
+              </div>
+              <div class="field-group">
+                <label data-i18n="ceiling_label">Ceiling Height (m)</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  name="ceilingHeight"
+                  placeholder="e.g. 2.8"
+                />
+              </div>
+              <div class="field-group">
+                <label data-i18n="users_label">Number of Users</label>
+                <input type="number" name="numUsers" placeholder="e.g. 2" />
+              </div>
+              <div class="field-group">
+                <label data-i18n="condition_label">Current Condition</label>
+                <select name="condition">
+                  <option value="" data-i18n="select_placeholder">
+                    — Select —
+                  </option>
+                  <option data-i18n="cond_empty">Empty Space</option>
+                  <option data-i18n="cond_reno">Renovation</option>
+                  <option data-i18n="cond_furnished">Already Furnished</option>
+                  <option data-i18n="cond_construction">
+                    Under Construction
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Style Preferences -->
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="style_pref_title">
+              Style Preferences
+            </h3>
+            <div class="form-grid">
+              <div class="field-group">
+                <label data-i18n="int_style">Interior Style</label>
+                <select name="interiorStyle">
+                  <option value="" data-i18n="select_placeholder">
+                    — Select —
+                  </option>
+                  <option>Modern</option>
+                  <option>Classic</option>
+                  <option>Minimal</option>
+                  <option>Scandinavian</option>
+                  <option>Japandi</option>
+                  <option>Bohemian</option>
+                  <option>Luxury</option>
+                  <option>Islamic / Arabic</option>
+                  <option>Contemporary</option>
+                  <option data-i18n="style_suggest">
+                    Not sure, suggest one
+                  </option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label data-i18n="mood_label">Mood</label>
+                <select name="mood">
+                  <option value="" data-i18n="select_placeholder">
+                    — Select —
+                  </option>
+                  <option>Calm</option>
+                  <option>Cozy</option>
+                  <option>Luxury</option>
+                  <option>Romantic</option>
+                  <option data-i18n="mood_family">Family-friendly</option>
+                  <option>Creative</option>
+                </select>
+              </div>
+              <div class="field-group full-width">
+                <label data-i18n="custom_style">Custom Style Description</label>
+                <textarea
+                  name="customStyle"
+                  rows="3"
+                  placeholder="Describe any specific style ideas, references, or inspirations..."
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Colors -->
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="colors_title">Colors</h3>
+            <div class="form-grid">
+              <div class="field-group">
+                <label data-i18n="pref_colors">Preferred Colors</label>
+                <input
+                  type="text"
+                  name="prefColors"
+                  placeholder="e.g. Cream, Navy, Terracotta"
+                />
+              </div>
+              <div class="field-group">
+                <label data-i18n="avoid_colors">Colors to Avoid</label>
+                <input
+                  type="text"
+                  name="avoidColors"
+                  placeholder="e.g. Red, Neon, Black"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Materials -->
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="materials_title">
+              Materials
+            </h3>
+            <div class="checkbox-grid">
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Wood" /><span
+                  data-i18n="mat_wood"
+                  >Wood</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Marble" /><span
+                  data-i18n="mat_marble"
+                  >Marble</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Glass" /><span
+                  data-i18n="mat_glass"
+                  >Glass</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Metal" /><span
+                  data-i18n="mat_metal"
+                  >Metal</span
+                ></label
+              >
+              <label class="check-item"
+                ><input
+                  type="checkbox"
+                  name="materials"
+                  value="Concrete"
+                /><span data-i18n="mat_concrete">Concrete</span></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Fabric" /><span
+                  data-i18n="mat_fabric"
+                  >Fabric</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Leather" /><span
+                  data-i18n="mat_leather"
+                  >Leather</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Velvet" /><span
+                  data-i18n="mat_velvet"
+                  >Velvet</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Ceramic" /><span
+                  data-i18n="mat_ceramic"
+                  >Ceramic</span
+                ></label
+              >
+              <label class="check-item"
+                ><input
+                  type="checkbox"
+                  name="materials"
+                  value="Natural Stone"
+                /><span data-i18n="mat_stone">Natural Stone</span></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Rattan" /><span
+                  data-i18n="mat_rattan"
+                  >Rattan</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Mirror" /><span
+                  data-i18n="mat_mirror"
+                  >Mirror</span
+                ></label
+              >
+            </div>
+          </div>
+
+          <!-- Furniture -->
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="furniture_title">
+              Furniture
+            </h3>
+            <div class="field-group">
+              <label data-i18n="furniture_req">Furniture Requirements</label>
+              <textarea
+                name="furniture"
+                rows="3"
+                data-i18n-placeholder="furniture_placeholder"
+                placeholder="Example: one bed only, small desk near the window, large wardrobe, no TV unit."
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Lighting -->
+          <div class="form-card" id="lighting-res">
+            <h3 class="form-card-title" data-i18n="lighting_title">Lighting</h3>
+            <div id="lighting-res-content"><!-- injected by JS --></div>
+          </div>
+
+          <!-- Personal Inspiration -->
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="inspiration_title">
+              Personal Inspiration
+            </h3>
+            <div class="field-group">
+              <label data-i18n="inspiration_label">Describe Inspiration</label>
+              <textarea
+                name="inspiration"
+                rows="3"
+                placeholder="Example: The client loves calm Turkish series interiors, hotel-like bedrooms, or a specific club color palette."
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Uploads -->
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="uploads_title">
+              Reference Images
+            </h3>
+            <div class="uploads-grid">
+              <div class="upload-box">
+                <div class="upload-icon">📷</div>
+                <p class="upload-title" data-i18n="upload_room">Room Image</p>
+                <p class="upload-desc" data-i18n="upload_room_desc">
+                  Upload current state of the space
+                </p>
+                <button
+                  type="button"
+                  class="btn-upload"
+                  data-i18n="choose_image"
+                >
+                  Choose Image
+                </button>
+                <span class="upload-note" data-i18n="upload_note"
+                  >Image analysis will be connected later.</span
+                >
+              </div>
+              <div class="upload-box">
+                <div class="upload-icon">🖼</div>
+                <p class="upload-title" data-i18n="upload_inspo">
+                  Inspiration Image
+                </p>
+                <p class="upload-desc" data-i18n="upload_inspo_desc">
+                  Share visual references or style examples
+                </p>
+                <button
+                  type="button"
+                  class="btn-upload"
+                  data-i18n="choose_image"
+                >
+                  Choose Image
+                </button>
+                <span class="upload-note" data-i18n="upload_note"
+                  >Image analysis will be connected later.</span
+                >
+              </div>
+              <div class="upload-box">
+                <div class="upload-icon">🎭</div>
+                <p class="upload-title" data-i18n="upload_mood">Moodboard</p>
+                <p class="upload-desc" data-i18n="upload_mood_desc">
+                  Upload a compiled moodboard if available
+                </p>
+                <button
+                  type="button"
+                  class="btn-upload"
+                  data-i18n="choose_image"
+                >
+                  Choose Image
+                </button>
+                <span class="upload-note" data-i18n="upload_note"
+                  >Image analysis will be connected later.</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-actions">
+            <button
+              type="button"
+              class="btn-secondary"
+              onclick="showSection('project-types')"
+              data-i18n="back_btn"
+            >
+              Back to Project Types
+            </button>
+            <button
+              type="submit"
+              class="btn-primary btn-generate"
+              data-i18n="generate_btn"
+            >
+              ✦ Generate Design Concept
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== COMMERCIAL FORM ===== -->
+    <section id="form-commercial" class="section">
+      <div class="page-inner form-page">
+        <div class="form-header">
+          <button class="btn-back" onclick="showSection('project-types')">
+            <span class="back-arrow">←</span>
+            <span data-i18n="back_btn">Back to Project Types</span>
+          </button>
+          <div class="form-title-block">
+            <span class="form-type-tag"
+              >🏪 <span data-i18n="type_com">Commercial</span></span
+            >
+            <h2 data-i18n="com_form_title">Commercial Design Details</h2>
+            <p data-i18n="com_form_sub">
+              Tell Hendsetna about your commercial space requirements.
+            </p>
+          </div>
+        </div>
+        <form id="com-form" onsubmit="submitForm(event)">
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="basics_title">
+              Project Basics
+            </h3>
+            <div class="form-grid">
+              <div class="field-group">
+                <label data-i18n="proj_name">Project Name</label>
+                <input
+                  type="text"
+                  name="projectName"
+                  required
+                  placeholder="e.g. Leva Café Redesign"
+                />
+              </div>
+              <div class="field-group">
+                <label data-i18n="business_type">Business Type</label>
+                <select name="businessType" required>
+                  <option value="">— Select —</option>
+                  <option>Café</option>
+                  <option>Restaurant</option>
+                  <option>Clothing Store</option>
+                  <option>Beauty Salon</option>
+                  <option>Clinic</option>
+                  <option>Retail Shop</option>
+                  <option>Showroom</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label data-i18n="brand_name">Brand Name</label>
+                <input
+                  type="text"
+                  name="brandName"
+                  placeholder="e.g. Leva Coffee"
+                />
+              </div>
+              <div class="field-group">
+                <label data-i18n="brand_colors">Brand Colors</label>
+                <input
+                  type="text"
+                  name="brandColors"
+                  placeholder="e.g. Dark green, cream, gold"
+                />
+              </div>
+              <div class="field-group">
+                <label data-i18n="target_customers">Target Customers</label>
+                <input
+                  type="text"
+                  name="targetCustomers"
+                  placeholder="e.g. Young professionals, students"
+                />
+              </div>
+              <div class="field-group">
+                <label data-i18n="area_label">Area (m²)</label>
+                <input type="number" name="area" placeholder="e.g. 80" />
+              </div>
+              <div class="field-group">
+                <label data-i18n="dimensions_label">Dimensions</label>
+                <input
+                  type="text"
+                  name="dimensions"
+                  placeholder="e.g. 10m × 8m"
+                />
+              </div>
+              <div class="field-group">
+                <label data-i18n="ceiling_label">Ceiling Height (m)</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  name="ceilingHeight"
+                  placeholder="e.g. 3.5"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="zones_title">
+              Required Zones
+            </h3>
+            <div class="checkbox-grid">
+              <label class="check-item"
+                ><input type="checkbox" name="zones" value="Reception" /><span
+                  data-i18n="zone_reception"
+                  >Reception</span
+                ></label
+              >
+              <label class="check-item"
+                ><input
+                  type="checkbox"
+                  name="zones"
+                  value="Waiting Area"
+                /><span data-i18n="zone_waiting">Waiting Area</span></label
+              >
+              <label class="check-item"
+                ><input
+                  type="checkbox"
+                  name="zones"
+                  value="Display Area"
+                /><span data-i18n="zone_display">Display Area</span></label
+              >
+              <label class="check-item"
+                ><input
+                  type="checkbox"
+                  name="zones"
+                  value="Seating Area"
+                /><span data-i18n="zone_seating">Seating Area</span></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="zones" value="Cashier" /><span
+                  data-i18n="zone_cashier"
+                  >Cashier</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="zones" value="Storage" /><span
+                  data-i18n="zone_storage"
+                  >Storage</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="zones" value="Photo Spot" /><span
+                  data-i18n="zone_photo"
+                  >Photo Spot</span
+                ></label
+              >
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="style_pref_title">
+              Style &amp; Mood
+            </h3>
+            <div class="form-grid">
+              <div class="field-group">
+                <label data-i18n="int_style">Interior Style</label>
+                <select name="interiorStyle">
+                  <option value="">— Select —</option>
+                  <option>Modern</option>
+                  <option>Luxury</option>
+                  <option>Industrial</option>
+                  <option>Minimal</option>
+                  <option data-i18n="style_bold">Bold &amp; Creative</option>
+                  <option data-i18n="style_brand">Brand-focused</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label data-i18n="mood_label">Mood</label>
+                <select name="mood">
+                  <option value="">— Select —</option>
+                  <option>Energetic</option>
+                  <option>Premium</option>
+                  <option>Friendly</option>
+                  <option>Professional</option>
+                  <option>Youthful</option>
+                  <option>Calm</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="materials_title">
+              Materials
+            </h3>
+            <div class="checkbox-grid">
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Wood" /><span
+                  data-i18n="mat_wood"
+                  >Wood</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Marble" /><span
+                  data-i18n="mat_marble"
+                  >Marble</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Glass" /><span
+                  data-i18n="mat_glass"
+                  >Glass</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Metal" /><span
+                  data-i18n="mat_metal"
+                  >Metal</span
+                ></label
+              >
+              <label class="check-item"
+                ><input
+                  type="checkbox"
+                  name="materials"
+                  value="Concrete"
+                /><span data-i18n="mat_concrete">Concrete</span></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Ceramic" /><span
+                  data-i18n="mat_ceramic"
+                  >Ceramic</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Leather" /><span
+                  data-i18n="mat_leather"
+                  >Leather</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Rattan" /><span
+                  data-i18n="mat_rattan"
+                  >Rattan</span
+                ></label
+              >
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="furniture_title">
+              Furniture
+            </h3>
+            <div class="field-group">
+              <textarea
+                name="furniture"
+                rows="3"
+                placeholder="Describe seating arrangements, counter style, display fixtures, etc."
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="lighting_title">Lighting</h3>
+            <div id="lighting-com-content"><!-- injected by JS --></div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="uploads_title">
+              Reference Images &amp; Brand Assets
+            </h3>
+            <div class="uploads-grid">
+              <div class="upload-box">
+                <div class="upload-icon">🏷</div>
+                <p class="upload-title" data-i18n="upload_logo">Brand Logo</p>
+                <p class="upload-desc" data-i18n="upload_logo_desc">
+                  Upload your brand logo or visual identity
+                </p>
+                <button
+                  type="button"
+                  class="btn-upload"
+                  data-i18n="choose_image"
+                >
+                  Choose Image
+                </button>
+                <span class="upload-note" data-i18n="upload_note"
+                  >Image analysis will be connected later.</span
+                >
+              </div>
+              <div class="upload-box">
+                <div class="upload-icon">📷</div>
+                <p class="upload-title" data-i18n="upload_room">Room Image</p>
+                <p class="upload-desc" data-i18n="upload_room_desc">
+                  Upload current state of the space
+                </p>
+                <button
+                  type="button"
+                  class="btn-upload"
+                  data-i18n="choose_image"
+                >
+                  Choose Image
+                </button>
+                <span class="upload-note" data-i18n="upload_note"
+                  >Image analysis will be connected later.</span
+                >
+              </div>
+              <div class="upload-box">
+                <div class="upload-icon">🖼</div>
+                <p class="upload-title" data-i18n="upload_ref">
+                  Reference Design
+                </p>
+                <p class="upload-desc" data-i18n="upload_ref_desc">
+                  Upload reference commercial spaces you admire
+                </p>
+                <button
+                  type="button"
+                  class="btn-upload"
+                  data-i18n="choose_image"
+                >
+                  Choose Image
+                </button>
+                <span class="upload-note" data-i18n="upload_note"
+                  >Image analysis will be connected later.</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="notes_title">
+              Additional Notes
+            </h3>
+            <div class="field-group">
+              <textarea
+                name="notes"
+                rows="3"
+                placeholder="Any other details, client preferences, or special requirements..."
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button
+              type="button"
+              class="btn-secondary"
+              onclick="showSection('project-types')"
+              data-i18n="back_btn"
+            >
+              Back to Project Types
+            </button>
+            <button
+              type="submit"
+              class="btn-primary btn-generate"
+              data-i18n="generate_btn"
+            >
+              ✦ Generate Design Concept
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== ADMINISTRATIVE FORM ===== -->
+    <section id="form-administrative" class="section">
+      <div class="page-inner form-page">
+        <div class="form-header">
+          <button class="btn-back" onclick="showSection('project-types')">
+            <span class="back-arrow">←</span>
+            <span data-i18n="back_btn">Back to Project Types</span>
+          </button>
+          <div class="form-title-block">
+            <span class="form-type-tag"
+              >🏢 <span data-i18n="type_adm">Administrative</span></span
+            >
+            <h2 data-i18n="adm_form_title">Administrative Design Details</h2>
+            <p data-i18n="adm_form_sub">
+              Tell Hendsetna about your workspace requirements.
+            </p>
+          </div>
+        </div>
+        <form id="adm-form" onsubmit="submitForm(event)">
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="basics_title">
+              Project Basics
+            </h3>
+            <div class="form-grid">
+              <div class="field-group">
+                <label data-i18n="proj_name">Project Name</label>
+                <input
+                  type="text"
+                  name="projectName"
+                  required
+                  placeholder="e.g. TechCorp HQ Office"
+                />
+              </div>
+              <div class="field-group">
+                <label data-i18n="space_type">Space Type</label>
+                <select name="spaceType" required>
+                  <option value="">— Select —</option>
+                  <option data-i18n="sp_office">Office Room</option>
+                  <option data-i18n="sp_meeting">Meeting Room</option>
+                  <option data-i18n="sp_reception">Reception Area</option>
+                  <option data-i18n="sp_openwork">Open Workspace</option>
+                  <option data-i18n="sp_manager">Manager Room</option>
+                  <option data-i18n="sp_training">Training Room</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label data-i18n="company_label">Company / Organization</label>
+                <input
+                  type="text"
+                  name="company"
+                  placeholder="e.g. TechCorp LLC"
+                />
+              </div>
+              <div class="field-group">
+                <label data-i18n="employees_label"
+                  >Number of Employees / Users</label
+                >
+                <input type="number" name="employees" placeholder="e.g. 12" />
+              </div>
+              <div class="field-group">
+                <label data-i18n="area_label">Area (m²)</label>
+                <input type="number" name="area" placeholder="e.g. 60" />
+              </div>
+              <div class="field-group">
+                <label data-i18n="dimensions_label">Dimensions</label>
+                <input
+                  type="text"
+                  name="dimensions"
+                  placeholder="e.g. 8m × 7.5m"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="work_style_title">
+              Work Style
+            </h3>
+            <div class="form-grid">
+              <div class="field-group">
+                <label data-i18n="work_style_label">Office Style</label>
+                <select name="workStyle">
+                  <option value="">— Select —</option>
+                  <option>Formal</option>
+                  <option>Creative</option>
+                  <option>Minimal</option>
+                  <option>Corporate</option>
+                  <option>Comfortable</option>
+                  <option>Luxury</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="zones_title">
+              Required Zones
+            </h3>
+            <div class="checkbox-grid">
+              <label class="check-item"
+                ><input type="checkbox" name="zones" value="Desks" /><span
+                  data-i18n="zone_desks"
+                  >Desks</span
+                ></label
+              >
+              <label class="check-item"
+                ><input
+                  type="checkbox"
+                  name="zones"
+                  value="Meeting Table"
+                /><span data-i18n="zone_meeting">Meeting Table</span></label
+              >
+              <label class="check-item"
+                ><input
+                  type="checkbox"
+                  name="zones"
+                  value="Waiting Seats"
+                /><span data-i18n="zone_waiting_seats"
+                  >Waiting Seats</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="zones" value="Storage" /><span
+                  data-i18n="zone_storage"
+                  >Storage</span
+                ></label
+              >
+              <label class="check-item"
+                ><input
+                  type="checkbox"
+                  name="zones"
+                  value="Presentation Screen"
+                /><span data-i18n="zone_presentation"
+                  >Presentation Screen</span
+                ></label
+              >
+              <label class="check-item"
+                ><input
+                  type="checkbox"
+                  name="zones"
+                  value="Coffee Corner"
+                /><span data-i18n="zone_coffee">Coffee Corner</span></label
+              >
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="colors_title">Colors</h3>
+            <div class="form-grid">
+              <div class="field-group">
+                <label data-i18n="pref_colors">Preferred Colors</label>
+                <input
+                  type="text"
+                  name="prefColors"
+                  placeholder="e.g. Navy, White, Grey"
+                />
+              </div>
+              <div class="field-group">
+                <label data-i18n="avoid_colors">Colors to Avoid</label>
+                <input
+                  type="text"
+                  name="avoidColors"
+                  placeholder="e.g. Brown, Dark Red"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="materials_title">
+              Materials
+            </h3>
+            <div class="checkbox-grid">
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Wood" /><span
+                  data-i18n="mat_wood"
+                  >Wood</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Glass" /><span
+                  data-i18n="mat_glass"
+                  >Glass</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Metal" /><span
+                  data-i18n="mat_metal"
+                  >Metal</span
+                ></label
+              >
+              <label class="check-item"
+                ><input
+                  type="checkbox"
+                  name="materials"
+                  value="Concrete"
+                /><span data-i18n="mat_concrete">Concrete</span></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Fabric" /><span
+                  data-i18n="mat_fabric"
+                  >Fabric</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Leather" /><span
+                  data-i18n="mat_leather"
+                  >Leather</span
+                ></label
+              >
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="furniture_title">
+              Furniture
+            </h3>
+            <div class="field-group">
+              <textarea
+                name="furniture"
+                rows="3"
+                placeholder="Describe desk types, seating requirements, storage needs, etc."
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="lighting_title">Lighting</h3>
+            <div id="lighting-adm-content"><!-- injected by JS --></div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="uploads_title">
+              Reference Images
+            </h3>
+            <div class="uploads-grid">
+              <div class="upload-box">
+                <div class="upload-icon">🏷</div>
+                <p class="upload-title" data-i18n="upload_logo_co">
+                  Company Logo
+                </p>
+                <p class="upload-desc" data-i18n="upload_logo_co_desc">
+                  Upload your company logo or brand guide
+                </p>
+                <button
+                  type="button"
+                  class="btn-upload"
+                  data-i18n="choose_image"
+                >
+                  Choose Image
+                </button>
+                <span class="upload-note" data-i18n="upload_note"
+                  >Image analysis will be connected later.</span
+                >
+              </div>
+              <div class="upload-box">
+                <div class="upload-icon">📷</div>
+                <p class="upload-title" data-i18n="upload_room">Room Image</p>
+                <p class="upload-desc" data-i18n="upload_room_desc">
+                  Upload current state of the space
+                </p>
+                <button
+                  type="button"
+                  class="btn-upload"
+                  data-i18n="choose_image"
+                >
+                  Choose Image
+                </button>
+                <span class="upload-note" data-i18n="upload_note"
+                  >Image analysis will be connected later.</span
+                >
+              </div>
+              <div class="upload-box">
+                <div class="upload-icon">🖼</div>
+                <p class="upload-title" data-i18n="upload_ref">
+                  Reference Design
+                </p>
+                <p class="upload-desc" data-i18n="upload_ref_desc">
+                  Upload reference office spaces you admire
+                </p>
+                <button
+                  type="button"
+                  class="btn-upload"
+                  data-i18n="choose_image"
+                >
+                  Choose Image
+                </button>
+                <span class="upload-note" data-i18n="upload_note"
+                  >Image analysis will be connected later.</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="notes_title">
+              Additional Notes
+            </h3>
+            <div class="field-group">
+              <textarea
+                name="notes"
+                rows="3"
+                placeholder="Any other requirements, brand guidelines, or special needs..."
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button
+              type="button"
+              class="btn-secondary"
+              onclick="showSection('project-types')"
+              data-i18n="back_btn"
+            >
+              Back to Project Types
+            </button>
+            <button
+              type="submit"
+              class="btn-primary btn-generate"
+              data-i18n="generate_btn"
+            >
+              ✦ Generate Design Concept
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== HOSPITALITY FORM ===== -->
+    <section id="form-hospitality" class="section">
+      <div class="page-inner form-page">
+        <div class="form-header">
+          <button class="btn-back" onclick="showSection('project-types')">
+            <span class="back-arrow">←</span>
+            <span data-i18n="back_btn">Back to Project Types</span>
+          </button>
+          <div class="form-title-block">
+            <span class="form-type-tag"
+              >🏨 <span data-i18n="type_hos">Hospitality / Tourism</span></span
+            >
+            <h2 data-i18n="hos_form_title">
+              Hospitality / Tourism Design Details
+            </h2>
+            <p data-i18n="hos_form_sub">
+              Tell Hendsetna about your hospitality space requirements.
+            </p>
+          </div>
+        </div>
+        <form id="hos-form" onsubmit="submitForm(event)">
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="basics_title">
+              Project Basics
+            </h3>
+            <div class="form-grid">
+              <div class="field-group">
+                <label data-i18n="proj_name">Project Name</label>
+                <input
+                  type="text"
+                  name="projectName"
+                  required
+                  placeholder="e.g. Azure Resort Suite"
+                />
+              </div>
+              <div class="field-group">
+                <label data-i18n="space_type">Space Type</label>
+                <select name="spaceType" required>
+                  <option value="">— Select —</option>
+                  <option data-i18n="sp_hotel">Hotel Room</option>
+                  <option data-i18n="sp_lobby">Resort Lobby</option>
+                  <option data-i18n="sp_guesthouse">Guest House</option>
+                  <option data-i18n="sp_lounge">Lounge</option>
+                  <option data-i18n="sp_chalet">Chalet</option>
+                  <option data-i18n="sp_restaurant_area">
+                    Restaurant Area
+                  </option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label data-i18n="guest_type">Target Guest Type</label>
+                <select name="guestType">
+                  <option value="">— Select —</option>
+                  <option>Families</option>
+                  <option>Couples</option>
+                  <option data-i18n="guest_business">Business Travelers</option>
+                  <option>Tourists</option>
+                  <option data-i18n="guest_luxury">Luxury Guests</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label data-i18n="area_label">Area (m²)</label>
+                <input type="number" name="area" placeholder="e.g. 45" />
+              </div>
+              <div class="field-group">
+                <label data-i18n="dimensions_label">Dimensions</label>
+                <input
+                  type="text"
+                  name="dimensions"
+                  placeholder="e.g. 7m × 6.5m"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="style_pref_title">
+              Style &amp; Mood
+            </h3>
+            <div class="form-grid">
+              <div class="field-group">
+                <label data-i18n="mood_label">Mood</label>
+                <select name="mood">
+                  <option value="">— Select —</option>
+                  <option>Relaxing</option>
+                  <option>Luxury</option>
+                  <option>Coastal</option>
+                  <option>Warm</option>
+                  <option>Elegant</option>
+                  <option>Traditional</option>
+                  <option>Modern</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label data-i18n="int_style">Interior Style</label>
+                <select name="interiorStyle">
+                  <option value="">— Select —</option>
+                  <option data-i18n="style_resort">Resort Style</option>
+                  <option data-i18n="style_modern_luxury">Modern Luxury</option>
+                  <option data-i18n="style_arabic_luxury">Arabic Luxury</option>
+                  <option>Coastal</option>
+                  <option>Minimal</option>
+                  <option>Classic</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="colors_title">Colors</h3>
+            <div class="form-grid">
+              <div class="field-group">
+                <label data-i18n="pref_colors">Preferred Colors</label>
+                <input
+                  type="text"
+                  name="prefColors"
+                  placeholder="e.g. Sand, Teal, Ivory"
+                />
+              </div>
+              <div class="field-group">
+                <label data-i18n="avoid_colors">Colors to Avoid</label>
+                <input
+                  type="text"
+                  name="avoidColors"
+                  placeholder="e.g. Neon, Heavy black"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="materials_title">
+              Materials
+            </h3>
+            <div class="checkbox-grid">
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Wood" /><span
+                  data-i18n="mat_wood"
+                  >Wood</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Marble" /><span
+                  data-i18n="mat_marble"
+                  >Marble</span
+                ></label
+              >
+              <label class="check-item"
+                ><input
+                  type="checkbox"
+                  name="materials"
+                  value="Natural Stone"
+                /><span data-i18n="mat_stone">Natural Stone</span></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Fabric" /><span
+                  data-i18n="mat_fabric"
+                  >Fabric</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Velvet" /><span
+                  data-i18n="mat_velvet"
+                  >Velvet</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Rattan" /><span
+                  data-i18n="mat_rattan"
+                  >Rattan</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Ceramic" /><span
+                  data-i18n="mat_ceramic"
+                  >Ceramic</span
+                ></label
+              >
+              <label class="check-item"
+                ><input type="checkbox" name="materials" value="Mirror" /><span
+                  data-i18n="mat_mirror"
+                  >Mirror</span
+                ></label
+              >
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="furniture_title">
+              Furniture
+            </h3>
+            <div class="field-group">
+              <textarea
+                name="furniture"
+                rows="3"
+                placeholder="Describe furniture requirements — bed type, seating areas, storage, amenity stations..."
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="lighting_title">Lighting</h3>
+            <div id="lighting-hos-content"><!-- injected by JS --></div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="uploads_title">
+              Reference Images
+            </h3>
+            <div class="uploads-grid">
+              <div class="upload-box">
+                <div class="upload-icon">📷</div>
+                <p class="upload-title" data-i18n="upload_room">Room Image</p>
+                <p class="upload-desc" data-i18n="upload_room_desc">
+                  Upload current state of the space
+                </p>
+                <button
+                  type="button"
+                  class="btn-upload"
+                  data-i18n="choose_image"
+                >
+                  Choose Image
+                </button>
+                <span class="upload-note" data-i18n="upload_note"
+                  >Image analysis will be connected later.</span
+                >
+              </div>
+              <div class="upload-box">
+                <div class="upload-icon">🖼</div>
+                <p class="upload-title" data-i18n="upload_ref">
+                  Reference Design
+                </p>
+                <p class="upload-desc" data-i18n="upload_ref_desc">
+                  Upload reference hospitality spaces you admire
+                </p>
+                <button
+                  type="button"
+                  class="btn-upload"
+                  data-i18n="choose_image"
+                >
+                  Choose Image
+                </button>
+                <span class="upload-note" data-i18n="upload_note"
+                  >Image analysis will be connected later.</span
+                >
+              </div>
+              <div class="upload-box">
+                <div class="upload-icon">🎭</div>
+                <p class="upload-title" data-i18n="upload_mood">Moodboard</p>
+                <p class="upload-desc" data-i18n="upload_mood_desc">
+                  Upload a compiled moodboard if available
+                </p>
+                <button
+                  type="button"
+                  class="btn-upload"
+                  data-i18n="choose_image"
+                >
+                  Choose Image
+                </button>
+                <span class="upload-note" data-i18n="upload_note"
+                  >Image analysis will be connected later.</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="form-card-title" data-i18n="notes_title">
+              Additional Notes
+            </h3>
+            <div class="field-group">
+              <textarea
+                name="notes"
+                rows="3"
+                placeholder="Any special requirements, experience goals, or design aspirations..."
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button
+              type="button"
+              class="btn-secondary"
+              onclick="showSection('project-types')"
+              data-i18n="back_btn"
+            >
+              Back to Project Types
+            </button>
+            <button
+              type="submit"
+              class="btn-primary btn-generate"
+              data-i18n="generate_btn"
+            >
+              ✦ Generate Design Concept
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== RESULTS SECTION ===== -->
+    <section id="results" class="section">
+      <div class="page-inner results-page">
+        <div class="results-header">
+          <p class="section-eyebrow" data-i18n="results_eyebrow">
+            Design Concept Ready
+          </p>
+          <h2 class="section-title" data-i18n="results_title">
+            Generated Design Concept
+          </h2>
+          <div class="results-actions-top">
+            <button
+              class="btn-secondary"
+              onclick="editRequirements()"
+              data-i18n="edit_btn"
+            >
+              Edit Requirements
+            </button>
+            <button
+              class="btn-primary"
+              onclick="showSection('project-types')"
+              data-i18n="new_design_btn"
+            >
+              + Start New Design
+            </button>
+          </div>
+        </div>
+
+        <div class="results-main">
+          <!-- Suggested Image -->
+          <div class="result-image-card">
+            <div class="result-img-wrap">
+              <img
+                src="assets/images/result-placeholder.jpg"
+                alt="Suggested interior design result"
+                onerror="
+                  this.style.display = 'none';
+                  this.nextElementSibling.style.display = 'flex';
+                "
+              />
+              <div class="result-img-placeholder">
+                <div class="placeholder-shapes">
+                  <div class="shape s1"></div>
+                  <div class="shape s2"></div>
+                  <div class="shape s3"></div>
+                </div>
+                <div class="result-img-label">
+                  <span>✦</span>
+                  <p data-i18n="result_img_label">Suggested AI Design Image</p>
+                  <small data-i18n="result_img_note"
+                    >Image generation will appear here after API
+                    integration.</small
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Summary Card -->
+          <div class="result-summary-card">
+            <h3 class="result-card-title" data-i18n="design_summary">
+              Design Summary
+            </h3>
+            <div class="summary-rows">
+              <div class="summary-row">
+                <span class="sum-key" data-i18n="sum_type">Project Type</span
+                ><span class="sum-val" id="res-type">Residential Bedroom</span>
+              </div>
+              <div class="summary-row">
+                <span class="sum-key" data-i18n="sum_style"
+                  >Style Direction</span
+                ><span class="sum-val">Modern Japandi</span>
+              </div>
+              <div class="summary-row">
+                <span class="sum-key" data-i18n="sum_mood">Mood</span
+                ><span class="sum-val" data-i18n="sum_mood_val"
+                  >Calm, warm, functional</span
+                >
+              </div>
+              <div class="summary-row">
+                <span class="sum-key" data-i18n="sum_palette"
+                  >Color Palette</span
+                >
+                <span class="sum-val palette-val">
+                  <span class="dot" style="background: #e8dccb"></span>
+                  <span class="dot" style="background: #fffbf3"></span>
+                  <span class="dot" style="background: #8b5e3c"></span>
+                  <span class="dot" style="background: #6b7a5c"></span>
+                  <span class="palette-names"
+                    >Beige, Off-white, Warm wood, Olive</span
+                  >
+                </span>
+              </div>
+              <div class="summary-row">
+                <span class="sum-key" data-i18n="sum_materials">Materials</span
+                ><span class="sum-val" data-i18n="sum_materials_val"
+                  >Natural wood · Linen · Matte ceramic</span
+                >
+              </div>
+              <div class="summary-row">
+                <span class="sum-key" data-i18n="sum_lighting">Lighting</span
+                ><span class="sum-val" data-i18n="sum_lighting_val"
+                  >Warm hidden LED + Pendant lights</span
+                >
+              </div>
+              <div class="summary-row">
+                <span class="sum-key" data-i18n="sum_furniture">Furniture</span
+                ><span class="sum-val" data-i18n="sum_furniture_val"
+                  >One bed · Compact desk · Large wardrobe</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detail Cards -->
+        <div class="result-details-grid">
+          <div class="detail-card">
+            <div class="detail-card-icon">📝</div>
+            <h4 data-i18n="res_brief_title">Design Brief</h4>
+            <p data-i18n="res_brief_body">
+              The space will be designed with a calm modern direction, focusing
+              on functionality, visual harmony, warm lighting, and materials
+              that match the client's lifestyle and preferences.
+            </p>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-icon">🎨</div>
+            <h4 data-i18n="res_palette_title">Color Palette</h4>
+            <div class="palette-swatches">
+              <div class="swatch" style="background: #e8dccb">
+                <span>Beige</span>
+              </div>
+              <div class="swatch" style="background: #fffbf3">
+                <span>Off-white</span>
+              </div>
+              <div class="swatch" style="background: #c4a07d">
+                <span>Warm wood</span>
+              </div>
+              <div class="swatch" style="background: #6b7a5c">
+                <span>Olive</span>
+              </div>
+              <div class="swatch" style="background: #1e3a5f">
+                <span>Navy acc.</span>
+              </div>
+            </div>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-icon">🪨</div>
+            <h4 data-i18n="res_materials_title">Materials</h4>
+            <ul class="detail-list" data-i18n="res_materials_list">
+              <li>Natural oak wood for flooring and built-ins</li>
+              <li>Linen fabric for upholstery and curtains</li>
+              <li>Matte ceramic tiles for wet areas</li>
+              <li>Brushed brass hardware accents</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-icon">🛋</div>
+            <h4 data-i18n="res_furniture_title">Furniture Suggestions</h4>
+            <ul class="detail-list" data-i18n="res_furniture_list">
+              <li>Low-profile platform bed in natural oak</li>
+              <li>Compact floating desk near the window</li>
+              <li>Integrated wardrobe with matte handles</li>
+              <li>Single accent armchair in linen</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-icon">💡</div>
+            <h4 data-i18n="res_lighting_title">Lighting Suggestions</h4>
+            <ul class="detail-list" data-i18n="res_lighting_list">
+              <li>Warm hidden LED coves along ceiling perimeter</li>
+              <li>Single pendant light above the bedside</li>
+              <li>Subtle floor lamp in reading corner</li>
+              <li>Warm 2700K temperature throughout</li>
+            </ul>
+          </div>
+          <div class="detail-card prompt-card">
+            <div class="detail-card-icon">⚡</div>
+            <h4 data-i18n="res_prompt_title">Image Generation Prompt</h4>
+            <p class="prompt-text" id="prompt-text" data-i18n="res_prompt_body">
+              Create a realistic interior design render of a calm Japandi-style
+              bedroom. Natural oak wood flooring, linen curtains, warm hidden
+              LED ceiling coves, a low platform bed, compact floating desk near
+              the window, integrated wardrobe with brushed brass handles. Color
+              palette: beige, off-white, warm wood tones, olive green accents.
+              Soft warm 2700K lighting. Photorealistic, professional interior
+              photography style.
+            </p>
+            <button class="btn-copy" id="copy-btn" onclick="copyPrompt()">
+              <span data-i18n="copy_btn">Copy Prompt</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Bottom Actions -->
+        <div class="results-actions-bottom">
+          <button
+            class="btn-secondary"
+            onclick="editRequirements()"
+            data-i18n="edit_btn"
+          >
+            Edit Requirements
+          </button>
+          <button
+            class="btn-ghost"
+            onclick="
+              alert('PDF download will be available after full integration.')
+            "
+            data-i18n="pdf_btn"
+          >
+            ⬇ Download Concept PDF
+          </button>
+          <button
+            class="btn-primary"
+            onclick="showSection('project-types')"
+            data-i18n="new_design_btn"
+          >
+            + Start New Design
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <span class="logo-en">Hendsetna</span>
+          <span class="logo-divider">|</span>
+          <span class="logo-ar">هندستنا</span>
+          <p data-i18n="footer_tagline">
+            AI-powered interior design assistant for creative professionals.
+          </p>
+        </div>
+        <div class="footer-links">
+          <a href="#" onclick="showSection('home')" data-i18n="nav_home"
+            >Home</a
+          >
+          <a href="#" onclick="showSection('how-it-works')" data-i18n="nav_how"
+            >How It Works</a
+          >
+          <a
+            href="#"
+            onclick="showSection('project-types')"
+            data-i18n="nav_start"
+            >Start Design</a
+          >
+        </div>
+        <div class="footer-copy">
+          <p data-i18n="footer_copy">
+            © 2025 Hendsetna. Built for interior designers, decor engineers &
+            architects.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
