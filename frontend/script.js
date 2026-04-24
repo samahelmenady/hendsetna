@@ -523,7 +523,11 @@ let currentLang = "en";
 let currentSection = "home";
 let selectedType = null;
 let previousFormId = null;
-const API_BASE_URL = "http://127.0.0.1:5000";
+const API_BASE =
+  window.location.hostname === "127.0.0.1" ||
+  window.location.hostname === "localhost"
+    ? "http://127.0.0.1:5000"
+    : "";
 
 /* ============================================================
    LIGHTING HTML BUILDER
@@ -1114,7 +1118,7 @@ async function submitForm(e) {
   console.log("Hendsetna payload sent to backend:", payload);
 
   try {
-    const response = await fetch(`${API_BASE_URL}/api/generate-design`, {
+    const response = await fetch(`${API_BASE}/api/generate-design`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
