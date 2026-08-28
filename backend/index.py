@@ -1,6 +1,7 @@
-# api/index.py
+# backend/index.py
 # This file acts as the entry point for Vercel's serverless functions.
 # It imports the Flask app instance from the backend module.
+
 
 from backend.app import app
 

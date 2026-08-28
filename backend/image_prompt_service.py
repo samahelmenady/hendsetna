@@ -1,10 +1,13 @@
 import base64
+import logging
 import random
 import re
 import unicodedata
 from urllib.parse import quote
 
 import requests
+
+logger = logging.getLogger(__name__)
 
 POLLINATIONS_BASE_URL = "https://image.pollinations.ai/prompt"
 PROMPT_QUALITY_INSTRUCTION = (
@@ -251,22 +254,22 @@ def generate_design_image(concept: dict, user_data: dict) -> dict:
             f"?width=768&height=768&nologo=true&enhance=true&seed={seed}"
         )
 
-        print("Using image provider: pollinations")
-        print("Final image prompt preview:", final_prompt_for_log[:800])
-        print("FINAL image_url_prompt:", image_url_prompt)
-        print("Contains non-ascii:", any(ord(c) > 127 for c in image_url_prompt))
-        print("Pollinations safe prompt length:", len(image_url_prompt))
-        print("Pollinations URL length:", len(image_url))
-        print("Image URL generated:", bool(image_url))
+        logger.info("Using image provider: pollinations")
+        logger.debug("Final image prompt preview: %s", final_prompt_for_log[:800])
+        logger.debug("Pollinations safe prompt: %s", image_url_prompt)
+        logger.debug(
+            "Contains non-ascii: %s", any(ord(c) > 127 for c in image_url_prompt)
+        )
+        logger.debug("Pollinations safe prompt length: %d", len(image_url_prompt))
+        logger.debug("Pollinations URL length: %d", len(image_url))
 
-        # Fetch the image from the URL
-        print("Fetching Pollinations image from URL...")
+        logger.info("Fetching Pollinations image from URL...")
         response = requests.get(image_url, timeout=90)
-        print("Pollinations fetch status:", response.status_code)
+        logger.info("Pollinations fetch status: %d", response.status_code)
         response.raise_for_status()  # Will raise an exception for 4xx/5xx status
 
         content_type = response.headers.get("Content-Type")
-        print("Pollinations content type:", content_type)
+        logger.debug("Pollinations content type: %s", content_type)
 
         if not (content_type and content_type.startswith("image/")):
             raise ValueError(
@@ -274,7 +277,7 @@ def generate_design_image(concept: dict, user_data: dict) -> dict:
             )
 
         image_base64 = base64.b64encode(response.content).decode("utf-8")
-        print("Image base64 generated:", bool(image_base64))
+        logger.info("Image successfully fetched and encoded (base64 length: %d)", len(image_base64))
 
         return {
             "image_generation_status": "success",
@@ -289,7 +292,7 @@ def generate_design_image(concept: dict, user_data: dict) -> dict:
         if image_url:
             error_message = f"Pollinations URL was generated, but backend could not download the image: {exc}"
 
-        print("Image generation or fetch failed:", error_message)
+        logger.warning("Image generation or fetch failed: %s", error_message)
 
         return {
             "image_generation_status": "failed",

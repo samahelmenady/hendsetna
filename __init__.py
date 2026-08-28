@@ -1,1 +1,1 @@
-# This file makes the 'api' directory a Python package.
+# This file makes the project root a Python package for Vercel imports.

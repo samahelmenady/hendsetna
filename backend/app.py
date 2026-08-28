@@ -8,22 +8,17 @@ try:
         build_fallback_design_concept, generate_design_concept,
         normalize_user_payload, sanitize_payload
     )
-    from image_prompt_service import generate_design_image, build_negative_prompt
+    from image_prompt_service import generate_design_image
 except ImportError:
     from .gemini_service import (
         build_fallback_design_concept, generate_design_concept,
         normalize_user_payload, sanitize_payload
     )
-    from .image_prompt_service import generate_design_image, build_negative_prompt
+    from .image_prompt_service import generate_design_image
 
 
 app = Flask(__name__)
 CORS(app)
-
-
-PROJECT_TYPE_ALIASES = {
-    "res": "residential", "com": "commercial", "adm": "administrative", "hos": "hospitality"
-}
 
 
 def _validate_payload(data):
@@ -62,7 +57,6 @@ def generate_design():
             app.logger.warning(
                 f"Gemini failed ({error_type}), using fallback. Details: {concept.get('details')}"
             )
-            print(f"Gemini invalid/unavailable ({error_type}); using fallback prompt.")
             concept = build_fallback_design_concept(user_data, gemini_error=concept)
 
         image_result = generate_design_image(concept, user_data)

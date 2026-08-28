@@ -1,4 +1,5 @@
 import json
+import logging
 import os
 import re
 import time
@@ -13,7 +14,9 @@ except ImportError:
     from .image_prompt_service import build_negative_prompt, required_response_schema
 
 
-DEFAULT_TEXT_MODEL_NAME = "gemini-1.5-flash"
+logger = logging.getLogger(__name__)
+
+DEFAULT_TEXT_MODEL_NAME = "gemini-2.5-flash"
 RETRY_DELAYS = (0, 2, 5)
 
 
@@ -187,6 +190,18 @@ def _split_color_text(value):
     return colors
 
 
+def _unique_list(items):
+    """Return a deduplicated list preserving insertion order (case-insensitive)."""
+    seen = set()
+    result = []
+    for item in items:
+        lowered = item.lower()
+        if lowered not in seen:
+            seen.add(lowered)
+            result.append(item)
+    return result
+
+
 def _user_color_constraints(user_data):
     preferred = []
     for key in ("preferred_colors", "brand_colors", "inspiration_colors"):
@@ -196,23 +211,7 @@ def _user_color_constraints(user_data):
     for key in ("colors_to_avoid",):
         avoid.extend(_split_color_text(user_data.get(key)))
 
-    seen = set()
-    preferred_unique = []
-    for color in preferred:
-        lowered = color.lower()
-        if lowered not in seen:
-            seen.add(lowered)
-            preferred_unique.append(color)
-
-    seen = set()
-    avoid_unique = []
-    for color in avoid:
-        lowered = color.lower()
-        if lowered not in seen:
-            seen.add(lowered)
-            avoid_unique.append(color)
-
-    return preferred_unique, avoid_unique
+    return _unique_list(preferred), _unique_list(avoid)
 
 
 def _constraint_values(user_data):
@@ -552,7 +551,7 @@ def generate_design_concept(user_data):
     client = genai.Client(api_key=api_key)
     prompt = _build_prompt(user_data)
     model_name = os.getenv("GEMINI_TEXT_MODEL", DEFAULT_TEXT_MODEL_NAME)
-    print(f"Using Gemini text model: {model_name}")
+    logger.info("Using Gemini text model: %s", model_name)
 
     last_error = None
     for attempt_index, delay in enumerate(RETRY_DELAYS):

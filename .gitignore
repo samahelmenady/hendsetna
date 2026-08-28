@@ -1,6 +1,19 @@
+# Secrets
 backend/.env
 .env
+
+# Python
 venv/
 __pycache__/
 *.pyc
+*.egg-info/
+dist/
+.pytest_cache/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
 .DS_Store
+Thumbs.db
